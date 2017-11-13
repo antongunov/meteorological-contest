@@ -1,0 +1,21 @@
+{
+  "name": "@antongunov/meteorological-contest",
+  "version": "0.0.1",
+  "description": "A simple SPA for representation meteorological data in an unknown city",
+  "private": true,
+  "author": {
+    "name": "Anton Gunov",
+    "email": "anton@gunov.name"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antongunov/meteorological-contest.git"
+  },
+  "scripts": {
+    "dev": "browser-sync start --server --no-notify --files \"index.html\" \"**/*.js\" \"**/*.css\""
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
