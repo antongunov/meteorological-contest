@@ -1,4 +1,4 @@
-(function(exports) {
+(function (exports) {
   exports.request = url => new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -22,4 +22,4 @@
 
     xhr.send();
   });
-})(window.app);
+})(window.App = (window.App || {}));
