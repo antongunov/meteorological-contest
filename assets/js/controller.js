@@ -4,6 +4,7 @@
   class Controller {
     constructor(id, fn) {
       this.id = id;
+      this.el = document.getElementById(id);
       if (fn && typeof fn === 'function') this.$load(fn);
     }
 
