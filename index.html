@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meteorological Contest</title>
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <script src="/assets/js/app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meteorological Contest</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/controller.js" defer></script>
+  <script src="/assets/js/filter-form.js" defer></script>
+  <script src="/assets/js/chart.js" defer></script>
+  <script src="/assets/js/bar-chart.js" defer></script>
+  <script src="/assets/js/app.js" defer></script>
 </head>
-<body><p>Hi!</p></body>
+<body class="page page__wrapper">
+  <div id="app" class="app">
+    <div class="app__filter-form">
+      <form id="filter-form" name="filter-form" class="form">
+        <fieldset class="form__group">
+          <label class="form__label form__label--radio">
+            <input type="radio" class="radio" name="chartType" value="temperature" autofocus checked>
+            <span class="label radio-button__label">Temperature</span>
+          </label>
+          <label class="form__label form__label--radio">
+            <input type="radio" class="radio" name="chartType" value="precipitation">
+            <span class="label">Precipitation</span>
+          </label>
+        </fieldset>
+        <fieldset class="form__group form__group--right">
+          <label class="form__label form__label--select">
+            <span class="label">From Year</span>
+            <select name="fromYear" disabled></select>
+          </label>
+          <label class="form__label form__label--select">
+            <span class="label">To Year</span>
+            <select name="toYear" disabled></select>
+          </label>
+        </fieldset>
+      </form>
+    </div>
+    <div class="app__canvas">
+      <canvas id="canvas" class="canvas">Your browser does not support the canvas element.</canvas>
+    </div>
+  </div>
+</body>
 </html>
