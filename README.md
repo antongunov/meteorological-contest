@@ -15,6 +15,9 @@ npm install
 
 # run for developing
 npm run dev
+
+# run for serving in production mode
+npm start
 ```
 
 ## License

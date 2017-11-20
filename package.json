@@ -13,9 +13,11 @@
     "url": "https://github.com/antongunov/meteorological-contest.git"
   },
   "scripts": {
-    "dev": "browser-sync start --server --no-notify --files \"index.html\" \"**/*.js\" \"**/*.css\""
+    "dev": "browser-sync start --server --no-notify --files \"index.html\" \"**/*.js\" \"**/*.css\"",
+    "start": "static"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.13"
+    "browser-sync": "^2.18.13",
+    "node-static": "^0.7.10"
   }
 }
