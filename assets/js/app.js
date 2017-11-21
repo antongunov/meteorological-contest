@@ -34,19 +34,16 @@
   app.drawBarChart = (props) => {
     const t0 = performance.now();
 
-    if (app.worker instanceof Worker) {
-      app.worker.terminate();
-      app.worker = null;
-    }
+    if (app.worker && app.worker.isBusy) app.worker.terminate();
 
-    const worker = new Worker('assets/js/store/worker.js');
+    app.worker = new Worker('assets/js/store/worker.js');
 
-    worker.postMessage(props);
-    app.worker = worker;
+    app.worker.postMessage(props);
+    app.worker.isBusy = true;
 
-    worker.onmessage = (event) => {
+    app.worker.onmessage = (event) => {
       if (event.data.error) return console.error(event.data.error);
-      app.worker = null;
+      app.worker.isBusy = false;
 
       const values = Object.values(event.data);
       app.barChart.draw(values);
@@ -54,7 +51,7 @@
       console.log('dt= ', performance.now() - t0);
     };
 
-    worker.onerror = event => console.error(event);
+    app.worker.onerror = event => console.error(event);
   };
 
 })(window.App);
