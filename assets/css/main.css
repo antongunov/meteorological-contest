@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
@@ -70,6 +72,34 @@ body {
   margin-right: 1rem;
 }
 
+.spinner {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-top: -1.5rem;
+  margin-left: -1.5rem;
+  border-radius: 50%;
+  border: .4rem solid #ccc;
+  border-top-color: #738ac8;
+  animation: spinner .6s linear infinite;
+}
 
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
+.spinner--hide {
+  opacity: 0;
+  transition: opacity .2s ease-in;
+}
 
+.spinner--show {
+  opacity: 1;
+  transition: opacity .3s ease-out;
+}
