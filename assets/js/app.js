@@ -12,6 +12,8 @@
   const app = new Controller('app', () => {
     app.el.style.display = 'flex';
 
+    app.spinner = document.getElementById('spinner');
+
     const canvas = document.getElementById('canvas');
 
     const parentSize = canvas.parentNode.getBoundingClientRect();
@@ -40,10 +42,12 @@
 
     app.worker.postMessage(props);
     app.worker.isBusy = true;
+    app.spinner.className = 'spinner spinner--show';
 
     app.worker.onmessage = (event) => {
       if (event.data.error) return console.error(event.data.error);
       app.worker.isBusy = false;
+      app.spinner.className = 'spinner spinner--hide';
 
       const values = Object.values(event.data);
       app.barChart.draw(values);
