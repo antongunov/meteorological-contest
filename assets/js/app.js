@@ -39,10 +39,10 @@
     if (app.worker) {
       if (app.worker.isBusy) {
         app.worker.terminate();
-        app.worker = new Worker('assets/js/store/worker.js');
+        app.worker = new Worker('assets/js/store/worker.js?1');
       }
     } else {
-      app.worker = new Worker('assets/js/store/worker.js');
+      app.worker = new Worker('assets/js/store/worker.js?1');
     }
 
     app.worker.postMessage(props);
@@ -55,7 +55,8 @@
       app.spinner.className = 'spinner spinner--hide';
 
       const values = Object.values(event.data);
-      app.barChart.draw(values);
+      const labels = Object.keys(event.data);
+      app.barChart.draw({ values, labels });
 
       console.log('dt= ', performance.now() - t0);
     };

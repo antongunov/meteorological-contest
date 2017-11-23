@@ -39,6 +39,27 @@
     reset() {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
+
+    rect() {
+      return this.canvas.getBoundingClientRect();
+    }
+
+    canvas() {
+      return this.canvas;
+    }
+
+    renderText({ text, x, y, fontSize, maxWidth }) {
+      this.ctx.save();
+      this.ctx.font = `${fontSize}px sans-serif`;
+      this.ctx.textAlign = 'left';
+      this.ctx.fillText(text, x, y, maxWidth);
+      this.ctx.restore();
+    }
+
+    updateText({ text, x, y, maxWidth }) {
+      this.ctx.clearRect(x, y, maxWidth, -y);
+      this.renderText({ text, x, y, fontSize: y, maxWidth });
+    }
   }
 
   exports.Chart = Chart;
