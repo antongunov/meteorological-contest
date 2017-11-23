@@ -36,9 +36,14 @@
   app.drawBarChart = (props) => {
     const t0 = performance.now();
 
-    if (app.worker && app.worker.isBusy) app.worker.terminate();
-
-    app.worker = new Worker('assets/js/store/worker.js');
+    if (app.worker) {
+      if (app.worker.isBusy) {
+        app.worker.terminate();
+        app.worker = new Worker('assets/js/store/worker.js');
+      }
+    } else {
+      app.worker = new Worker('assets/js/store/worker.js');
+    }
 
     app.worker.postMessage(props);
     app.worker.isBusy = true;
